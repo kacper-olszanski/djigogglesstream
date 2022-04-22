@@ -1,32 +1,43 @@
 {
-  "name": "voc-poc",
+  "name": "djifpvoutstream",
   "version": "1.0.0",
-  "description": "DJI FPV Goggle USB Video Out",
-  "main": "index.js",
-  "dependencies": {
-    "int-to-binary": "^1.0.2",
-    "usb": "^1.7.1",
-    "yargs": "^17.0.1"
-  },
-  "devDependencies": {},
+  "description": "",
+  "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && yarn minify",
+    "dev": "yarn ts-node ./src/",
+    "prod": "yarn build && node ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "exe": "yarn build && yarn pkg ./dist/index.js --config package.json",
+    "minify": "yarn uglifyjs --compress --mangle -- ./dist/index.js -o ./dist/index.js &&  yarn uglifyjs --compress --mangle -- ./dist/goggles.js -o ./dist/goggles.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fpv-wtf/voc-poc.git"
+  "author": "Kacper Olszanski",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^16.14.2",
+    "@types/yargs": "^17.0.9",
+    "usb": "^2.1.2",
+    "yargs": "^17.3.1"
   },
-  "keywords": [
-    "dji",
-    "fpv",
-    "goggles",
-    "video",
-    "stream"
-  ],
-  "author": "Joonas Trussmann",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fpv-wtf/voc-poc/issues"
+  "devDependencies": {
+    "pkg": "^5.6.0",
+    "prebuildify": "^5.0.0",
+    "prebuildify-ci": "^1.0.5",
+    "ts-node": "^10.6.0",
+    "typescript": "^4.6.2",
+    "uglify-js": "^3.15.4"
   },
-  "homepage": "https://github.com/fpv-wtf/voc-poc#readme"
+  "pkg": {
+    "scripts": "./dist/*/*.js",
+    "outputPath": "./bin",
+    "assets": [
+      "./stuffneeded/**",
+      "./node_modules/usb/**"
+    ],
+    "targets": [
+      "node16-win-x64",
+      "node16-linux-x64",
+      "node16-macos-x64"
+    ]
+  }
 }
