@@ -4,9 +4,9 @@
  
 # tl;dr;
 
-Install **nodejs** and the Javascript dependencies
+Install **nodejs**, **yarn** and the Javascript dependencies
 
-    npm install
+    yarn install
     
 Connect your DJI FPV goggles to your PC, power on your quad, make sure the stream is connected and run:
 
