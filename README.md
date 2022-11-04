@@ -1,37 +1,30 @@
 # ¯\\\_(ツ)_/¯
 **voc-poc** is a proof of concept for video put from the DJI FPV Goggles over USB.
 
-## Community projects
-This proof of concept has lead to many awesome things:
-
- - [WideFPV](https://widefpv.com/) - an awesome Chrome based webapp with local and RTMP streaming, DVR, clean HDMI out and more.
- - [CosmoStreamer](https://cosmostreamer.com/products/djifpvgoggles/) - a paid, feature rich Raspberry PI image for HDMI out and streaming, including iOS support
- - [DigiView-SBC](https://github.com/fpvout/DigiView-SBC) - an open source Raspberry PI image for your HDMI out needs
- - [fpv-dvca](https://github.com/d4rken/fpv-dvca) - an open source Android app by d4rken, including DVR and VR mode
  
 # tl;dr;
 
-Install **nodejs** and the Javascript dependencies
+Install **nodejs**, **yarn** and the Javascript dependencies
 
-    npm install
+    yarn install
     
 Connect your DJI FPV goggles to your PC, power on your quad, make sure the stream is connected and run:
 
-    node index.js -f outfile.bin
+    yarn run
     
 If all goes well voc-poc will find your DJI Goggles, obtain the USB interface and write the raw video stream to outfile.bin.
 
 If you want to preview the stream live install ffplay (part of the **ffmpeg** package) and use the -o option.
 
-    node index.js -o | ffplay -i - -analyzeduration 1 -probesize 32 -sync ext
+    yarn run -o | ffplay -i - -analyzeduration 1 -probesize 32 -sync ext
 
 If you want to produce a nice outfile.mp4, pipe the output through ffmpeg:
 
-    node index.js -o | ffmpeg -vcodec copy outfile.mp4 -i -
+    yarn run -o | ffmpeg -vcodec copy outfile.mp4 -i -
 
 If needed -o and -f may be combined.
 
-See `node index.js --help` for more options.
+See `yarn run --help` for more options.
 
 ## Troubleshooting
 If you get USB errors on Windows make sure the Goggles Bulk Transfer Endpoint is using WinUSB drivers using [Zadiq](https://zadig.akeo.ie/).
@@ -63,11 +56,10 @@ In any case, ffmpeg and other an make sense of it.
 ### Nice to have
 
  - ~~Set the output file path via cli~~
- - More error handling
- - Wait for Goggles to appear if not connected
+ - ~~More error handling~~
+ - ~~Wait for Goggles to appear if not connected~~
  - Reconnect (and re send magic packet) when connection lost
  - Support multiple Goggles
- - Rewrite to C
 
 ## Why Nodejs?
 
@@ -75,8 +67,4 @@ Why not?
 
 ## Support the effort
 
-If you'd like, you can send some ETH to `0xbAB1fec80922328F27De6E2F1CDBC2F322397637` or BTC to `3L7dE5EHtyd2b1tXBwdnWC2MADkV2VTbrq`  or [buy me a coffe](https://www.buymeacoffee.com/fpv.wtf).
-
-## Credits
-
-Shout out to Jack from [D3VL](https://d3vl.com/) for the debugging help, the og-s for [dji-firmware-tools](https://github.com/o-gs/dji-firmware-tools) and everyone else doing great work in the scene.
+TODO: add support links
