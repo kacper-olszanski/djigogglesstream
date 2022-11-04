@@ -2,6 +2,12 @@ import { findByIds } from "usb";
 import { Device } from "usb/dist/usb";
 import { InEndpoint } from "usb/dist/usb/endpoint";
 import { Interface } from "usb/dist/usb/interface";
+import { Yrg } from "./util";
+
+const enum MAGIC_IDS {
+    VID = 0x2ca3,
+    PID = 0x1f,
+}
 
 class Goggles {
 
@@ -14,7 +20,7 @@ class Goggles {
     }
 
     public static connect(): Goggles | undefined {
-        const device = findByIds(0x2ca3, 0x1f);
+        const device = findByIds(MAGIC_IDS.VID, MAGIC_IDS.PID);
         if(!device) {
             console.error(ErrorMsg.NOT_FOUND)
             return undefined;
@@ -48,7 +54,7 @@ class Goggles {
     private inpoint?: InEndpoint;
     private outpoint?: InEndpoint;
 
-    initStreamFromGoggle(argv: any,  dataListener: (...args: any[]) => void) {
+    initStreamFromGoggle(argv: Yrg,  dataListener: (...args: any[]) => void) {
         this.open();
         this.iface = this.getInterface(3);
 
