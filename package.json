@@ -33,7 +33,6 @@
     "scripts": "./dist/*/*.js",
     "outputPath": "./bin",
     "assets": [
-      "./stuffneeded/**",
       "./node_modules/ffmpeg-cli/**",
       "./node_modules/ffmpeg-static/**",
       "./node_modules/usb/**"

@@ -1,4 +1,4 @@
-# ¯\\\_(ツ)_/¯
+# ¯ヾ(⌐■_■)ノ♪¯
 **voc-poc** is a proof of concept for video put from the DJI FPV Goggles over USB.
 
  
