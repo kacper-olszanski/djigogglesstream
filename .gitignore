@@ -1,5 +1,7 @@
 node_modules/
 bin/
 dist/
+.temp/
+.ffbinaries/
 otherProject/
 *.log
